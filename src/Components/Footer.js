@@ -1,5 +1,5 @@
 import React from 'react';
-import { ItemTitle, ItemSubTitle, ItemValueSmall, ItemSub, FooterItemValueSmall } from '../Components/Styles/StyleTwo';
+import { FooterItemValueSmall } from '../Components/Styles/StyleTwo';
 import { FetchCoinPrice } from './Api/UseApi';
 import Slider from 'react-slick';
 import styled from 'styled-components';
@@ -26,22 +26,23 @@ const Footer = () => {
 			{loading ? (
 				'Loading...'
 			) : (
-				<>
+				<React.Fragment>
 					<FooterItemValueSmall>
-						<Slider {...FooterSlider}>
-							{results &&
-								results.length > 0 &&
-								results.map((result) => (
+						{results &&
+						results.length > 0 && (
+							<Slider {...FooterSlider}>
+								{results.map((result) => (
 									<FooterList key={result.id}>
-										<FooterTitle>{result.id}</FooterTitle> <span>{result.price_usd}</span>
-										{console.log(result.id)}
+										<FooterTitle>{result.id}</FooterTitle> <span> ${result.price_usd}</span>
+										{/* {console.log(result)} */}
 									</FooterList>
 								))}
-							{console.log(results)}
-						</Slider>
+							</Slider>
+						)}
+						{console.log(results)}
 					</FooterItemValueSmall>
 					<div>{error && error}</div>
-				</>
+				</React.Fragment>
 			)}
 		</React.Fragment>
 	);

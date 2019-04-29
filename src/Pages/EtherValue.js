@@ -9,7 +9,7 @@ import { ItemTitle, ItemSubTitle, ItemValueSmall, ItemSub } from "../Components/
 
 const EtherValue = () => {
   const { results, loading, error } = FetchEtherBalance();
-  const { priceResults, priceloading, priceerror } = FetchEtherPrice();
+  const { priceResults } = FetchEtherPrice();
   // let web3 = window.web3;
   // var value = web3.fromWei(results, "ether");
   // console.log(results);
