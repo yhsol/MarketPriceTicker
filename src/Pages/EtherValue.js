@@ -13,7 +13,8 @@ const EtherValue = () => {
   // let web3 = window.web3;
   // var value = web3.fromWei(results, "ether");
   // console.log(results);
-  const currentValue = results * priceResults;
+  const value = results / 1000000000000000000;
+  const currentValue = value * priceResults;
 
   
   return (
@@ -25,7 +26,7 @@ const EtherValue = () => {
           <ItemTitle>EtherValue</ItemTitle>
           <ItemSubTitle>balance</ItemSubTitle>
           <ItemValueSmall>
-            {results}<ItemSub>{" "}(ETH)</ItemSub>
+            {value}<ItemSub>{" "}(ETH)</ItemSub>
           {/* {console.log(results)} */}
           </ItemValueSmall>
           <ItemSubTitle>price</ItemSubTitle>

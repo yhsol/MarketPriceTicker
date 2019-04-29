@@ -35,12 +35,26 @@ export const HeaderTitle = styled.div`
 	font-weight: 500;
 	text-align: center;
 `;
+export const SFotoer = styled.footer`
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 3rem;
+	z-index: 10;
+	box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
+	background-color: #222;
+	opacity: 0.98;
+	padding-bottom: 60px;
+`;
+
+export const FooterArea = styled.div`text-align: center;`;
 
 export const ItemList = styled.div`
-	margin: 6rem auto;
+	margin: 6rem auto 0;
 	background-color: #222;
 	width: 84%;
-	height: 82%;
+	height: 75%;
 	overflow: hidden;
 `;
 
@@ -79,4 +93,14 @@ export const ItemSub = styled.span`
 	font-size: 2.4rem;
 	opacity: 0.5;
 	color: #cac3b1;
+`;
+
+// Footer
+
+export const FooterItemValueSmall = styled.div`
+	font-size: 3rem;
+	margin: 3rem auto;
+	color: #e3e6e1;
+	background-color: rgba(0, 0, 0, 0.2);
+	padding-bottom: 1rem;
 `;

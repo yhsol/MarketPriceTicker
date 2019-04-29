@@ -59,3 +59,15 @@ const etherPriceApi = axios.create({
 export const useEtherPriceApi = {
 	ehterPriceApi: () => etherPriceApi.get('/ticker/ethereum/')
 };
+
+const coinPriceApi = axios.create({
+	baseURL: 'https://api.coinmarketcap.com/v1',
+	method: 'GET',
+	crossDomain: true,
+	Accept: 'application/json',
+	'Accept-Encoding': 'deflate, gzip'
+});
+
+export const useCoinPriceApi = {
+	coinPrice: () => coinPriceApi.get('/ticker/?limit=10')
+};

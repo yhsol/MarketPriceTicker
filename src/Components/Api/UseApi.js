@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useExaApi, useGasPriceApi, useEtherBalanceApi, useEtherPriceApi } from './Api';
+import { useExaApi, useGasPriceApi, useEtherBalanceApi, useEtherPriceApi, useCoinPriceApi } from './Api';
 
 export function useInterval(callback, delay) {
 	const savedCallback = useRef();
@@ -137,22 +137,48 @@ export const FetchEtherPrice = () => {
 	useInterval(async () => {
 		const { data: { 0: { price_usd } } } = await useEtherPriceApi.ehterPriceApi();
 		if (price_usd) setPriceResults(price_usd);
-		console.log(price_usd);
+		// console.log(price_usd);
 	}, 1000);
 
 	useEffect(() => {
 		try {
-			setPriceError(true);
+			setPriceLoading(true);
 		} catch (error) {
 			console.error(error);
-			setPriceLoading("Can't find infomation!");
+			setPriceError("Can't find infomation!");
 		} finally {
-			setPriceError(false);
+			setPriceLoading(false);
 		}
 	}, []);
 	// console.log(results);
 
 	return { priceResults, priceloading, priceerror };
+};
+
+export const FetchCoinPrice = () => {
+	const [ results, setResults ] = useState(null);
+	const [ loading, setLoading ] = useState(true);
+	const [ error, setError ] = useState(null);
+
+	useInterval(async () => {
+		const { data } = await useCoinPriceApi.coinPrice();
+		if (data) setResults(data);
+		// console.log(data);
+	}, 1000);
+
+	useEffect(() => {
+		try {
+			setLoading(true);
+		} catch (error) {
+			console.error(error);
+			setError("Can't find infomation!");
+		} finally {
+			setLoading(false);
+		}
+	}, []);
+	// console.log(results);
+
+	return { results, loading, error };
 };
 
 // export const FetchEtherBalance = () => {
