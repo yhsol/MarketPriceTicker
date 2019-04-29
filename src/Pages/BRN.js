@@ -20,7 +20,7 @@ const BRN = () => {
           </ItemTitle>
           <ItemValue>
             {results && results.length > 0 && results[0].price}<ItemSub>{" "}(ETH)</ItemSub>
-          {console.log(results)}
+          {/* {console.log(results)} */}
           </ItemValue>
 
           <ItemSubTitle>

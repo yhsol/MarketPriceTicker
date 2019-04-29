@@ -12,7 +12,7 @@ const EtherValue = () => {
   const { priceResults, priceloading, priceerror } = FetchEtherPrice();
   // let web3 = window.web3;
   // var value = web3.fromWei(results, "ether");
-  console.log(results);
+  // console.log(results);
   const currentValue = results * priceResults;
 
   

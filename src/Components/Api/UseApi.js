@@ -135,9 +135,9 @@ export const FetchEtherPrice = () => {
 	const [ priceerror, setPriceError ] = useState(null);
 
 	useInterval(async () => {
-		const { data: { result: { ethusd: result } } } = await useEtherPriceApi.ehterPriceApi();
-		if (result) setPriceResults(result);
-		// console.log(result);
+		const { data: { 0: { price_usd } } } = await useEtherPriceApi.ehterPriceApi();
+		if (price_usd) setPriceResults(price_usd);
+		console.log(price_usd);
 	}, 1000);
 
 	useEffect(() => {

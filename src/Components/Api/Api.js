@@ -47,6 +47,15 @@ export const useEtherBalanceApi = {
 		)
 };
 
+const etherPriceApi = axios.create({
+	baseURL: 'https://api.coinmarketcap.com/v1',
+	method: 'GET',
+	crossDomain: true,
+	symbol: 'ETH',
+	Accept: 'application/json',
+	'Accept-Encoding': 'deflate, gzip'
+});
+
 export const useEtherPriceApi = {
-	ehterPriceApi: () => etherScanApi.get('/api?module=stats&action=ethprice')
+	ehterPriceApi: () => etherPriceApi.get('/ticker/ethereum/')
 };
