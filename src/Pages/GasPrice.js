@@ -17,7 +17,7 @@ const GasPrice = () => {
           <ItemTitle>GasPrice</ItemTitle>
           <ItemSubTitle>{`Fast (< 1 min to confirm)`}</ItemSubTitle>
           <ItemValue>{results && results.length > 0 && results}<ItemSub>{" "}GWei</ItemSub></ItemValue>
-          <div>{error && error}</div>
+          <div>{error}</div>
         </div>
       )}
     </>

@@ -10,13 +10,14 @@ const FooterTitle = styled.span`color: #cac3b1;`;
 
 const Footer = () => {
 	const { results, loading, error } = FetchCoinPrice();
+
 	const FooterSlider = {
 		dots: true,
 		infinite: true,
 		slidesToShow: 2,
-		slidesToScroll: 6,
+		slidesToScroll: 1,
 		autoplay: true,
-		speed: 20000,
+		speed: 5000,
 		autoplaySpeed: 2000,
 		cssEase: 'linear'
 	};
@@ -41,7 +42,7 @@ const Footer = () => {
 						)}
 						{console.log(results)}
 					</FooterItemValueSmall>
-					<div>{error && error}</div>
+					<div>{error}</div>
 				</React.Fragment>
 			)}
 		</React.Fragment>

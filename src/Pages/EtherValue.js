@@ -1,5 +1,5 @@
 import React from "react";
-import { FetchEtherBalance, FetchEtherPrice } from "../Components/Api/UseApi";
+import { FetchEtherBalance, FetchEtherPrice, FetchKrw } from "../Components/Api/UseApi";
 // import { ItemTitle, ItemSubTitle, ItemValueSmall } from "../Components/Style";
 import { ItemTitle, ItemSubTitle, ItemValueSmall, ItemSub } from "../Components/Styles/StyleTwo";
 // import { ItemTitle, ItemSubTitle, ItemValueSmall } from "../Components/StyleThree";
@@ -10,6 +10,8 @@ import { ItemTitle, ItemSubTitle, ItemValueSmall, ItemSub } from "../Components/
 const EtherValue = () => {
   const { results, loading, error } = FetchEtherBalance();
   const { priceResults } = FetchEtherPrice();
+  const { krwResults } = FetchKrw();
+
   // let web3 = window.web3;
   // var value = web3.fromWei(results, "ether");
   // console.log(results);
@@ -33,7 +35,7 @@ const EtherValue = () => {
           <ItemValueSmall>
             {currentValue} <ItemSub>{" "}(USD)</ItemSub>
           </ItemValueSmall>
-          <div>{error && error}</div>
+          <div>{error}</div>
         </div>
       )}
     </>

@@ -16,7 +16,7 @@ const exaApi = axios.create({
 export const useExaApi = {
 	brnApi: () =>
 		exaApi.post('/getTradeByPair', {
-			pairName: 'ETH_BTC'
+			pairName: 'BRN_ETH'
 		}),
 	eveApi: () =>
 		exaApi.post('/getTradeByPair', {
@@ -48,16 +48,23 @@ export const useEtherBalanceApi = {
 };
 
 const etherPriceApi = axios.create({
-	baseURL: 'https://api.coinmarketcap.com/v1',
+	baseURL: 'https://min-api.cryptocompare.com/data',
 	method: 'GET',
-	crossDomain: true,
-	symbol: 'ETH',
-	Accept: 'application/json',
-	'Accept-Encoding': 'deflate, gzip'
+	crossDomain: true
 });
 
 export const useEtherPriceApi = {
-	ehterPriceApi: () => etherPriceApi.get('/ticker/ethereum/')
+	ehterPriceApi: () => etherPriceApi.get('/price?fsym=ETH&tsyms=USD')
+};
+
+const usdtPriceApi = axios.create({
+	baseURL: 'https://min-api.cryptocompare.com/data',
+	method: 'GET',
+	crossDomain: true
+});
+
+export const useUsdtPriceApi = {
+	fetchusdtPriceApi: () => usdtPriceApi.get('/price?fsym=USDT&tsyms=USD')
 };
 
 const coinPriceApi = axios.create({
@@ -70,4 +77,14 @@ const coinPriceApi = axios.create({
 
 export const useCoinPriceApi = {
 	coinPrice: () => coinPriceApi.get('/ticker/?limit=10')
+};
+
+const krwApi = axios.create({
+	baseURL: 'https://api.exchangeratesapi.io',
+	method: 'GET',
+	crossDomain: true
+});
+
+export const useKrwApi = {
+	krwPrice: () => krwApi.get('/latest?symbols=KRW&base=USD')
 };

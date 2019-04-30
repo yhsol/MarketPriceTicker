@@ -1,5 +1,5 @@
 import React from "react";
-import { FetchBrnApi, FetchEtherPrice } from "../Components/Api/UseApi";
+import { FetchBrnApi, FetchEtherPrice, FetchKrw } from "../Components/Api/UseApi";
 // import { ItemTitle, ItemSub, ItemValue, ItemSubTitle } from "../Components/Styles/Style";
 import { ItemTitle, ItemSub, ItemValue, ItemSubTitle, ItemValueSmall } from "../Components/Styles/StyleTwo";
 // import { ItemTitle, ItemSub, ItemValue, ItemSubTitle } from "../Components/Styles/StyleThree";
@@ -8,6 +8,7 @@ import { ItemTitle, ItemSub, ItemValue, ItemSubTitle, ItemValueSmall } from "../
 const BRN = () => {
   const { results, loading, error } = FetchBrnApi();
   const { priceResults } = FetchEtherPrice();
+  const { krwResults } = FetchKrw();
   
   return (
     <>
@@ -23,14 +24,14 @@ const BRN = () => {
           {/* {console.log(results)} */}
           </ItemValue>
           <ItemValueSmall>
-          {results && results.length > 0 && results[0].price * priceResults}<ItemSub>{" "}(USD)</ItemSub>
+          {results && results.length > 0 && results[0].price * priceResults * krwResults}<ItemSub>{" "}(KRW)</ItemSub>
           {/* {console.log(results)} */}
           </ItemValueSmall>
 
           <ItemSubTitle>
           {results && results.length > 0 && results[0].time}
           </ItemSubTitle>
-          <div>{error && error}</div>
+          <div>{error}</div>
         </div>
       )}
     </>
