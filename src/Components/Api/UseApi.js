@@ -93,12 +93,19 @@ export const FetchGasPriceApi = () => {
 	useInterval(async () => {
 		const { data: { safeLow: result } } = await useGasPriceApi.gasPrice();
 		if (result) setResults(result);
+		console.log(result);
+	}, 1800000);
+
+	const fetchGasPrice = async () => {
+		const { data: { safeLow: result } } = await useGasPriceApi.gasPrice();
+		if (result) setResults(result);
 		// console.log(result);
-	}, 1000);
+	};
 
 	useEffect(() => {
 		try {
 			setLoading(true);
+			fetchGasPrice();
 		} catch (error) {
 			console.error(error);
 			setError("Can't find infomation!");
@@ -120,11 +127,18 @@ export const FetchEtherBalance = () => {
 		const { data: { result } } = await useEtherBalanceApi.ehterBalanceApi();
 		if (result) setResults(result);
 		// console.log(result);
-	}, 1000);
+	}, 1800000);
+
+	const fetchEtherBalance = async () => {
+		const { data: { result } } = await useEtherBalanceApi.ehterBalanceApi();
+		if (result) setResults(result);
+		// console.log(result);
+	};
 
 	useEffect(() => {
 		try {
 			setLoading(true);
+			fetchEtherBalance();
 		} catch (error) {
 			console.error(error);
 			setError("Can't find infomation!");
@@ -142,11 +156,11 @@ export const FetchEtherPrice = () => {
 	const [ priceloading, setPriceLoading ] = useState(true);
 	const [ priceerror, setPriceError ] = useState(null);
 
-	// useInterval(async () => {
-	// 	const { data: { USD } } = await useEtherPriceApi.ehterPriceApi();
-	// 	if (USD) setPriceResults(USD);
-	// 	// console.log(price_usd);
-	// }, 10000);
+	useInterval(async () => {
+		const { data: { USD } } = await useEtherPriceApi.ehterPriceApi();
+		if (USD) setPriceResults(USD);
+		// console.log(price_usd);
+	}, 1800000);
 
 	const fetchEtherPrice = async () => {
 		const { data: { USD } } = await useEtherPriceApi.ehterPriceApi();
@@ -174,11 +188,11 @@ export const FetchUsdtPrice = () => {
 	const [ usdtloading, setUsdtLoading ] = useState(true);
 	const [ usdterror, setUsdtError ] = useState(null);
 
-	// useInterval(async () => {
-	// 	const { data: { USD } } = await useEtherPriceApi.ehterPriceApi();
-	// 	if (USD) setPriceResults(USD);
-	// 	// console.log(price_usd);
-	// }, 10000);
+	useInterval(async () => {
+		const { data: { USD } } = await useUsdtPriceApi.fetchusdtPriceApi();
+		if (USD) setUsdtResults(USD);
+		// console.log(price_usd);
+	}, 1800000);
 
 	const fetchUsdtPrice = async () => {
 		const { data: { USD } } = await useUsdtPriceApi.fetchusdtPriceApi();
@@ -207,11 +221,11 @@ export const FetchCoinPrice = () => {
 	const [ loading, setLoading ] = useState(true);
 	const [ error, setError ] = useState(null);
 
-	// useInterval(async () => {
-	// 	const { data } = await useCoinPriceApi.coinPrice();
-	// 	if (data) setResults(data);
-	// 	// console.log(data);
-	// }, 1000);
+	useInterval(async () => {
+		const { data } = await useCoinPriceApi.coinPrice();
+		if (data) setResults(data);
+		console.log(data);
+	}, 1800000);
 
 	const fetchCoinPrice = async () => {
 		const { data } = await useCoinPriceApi.coinPrice();
@@ -244,11 +258,18 @@ export const FetchKrw = () => {
 		const { data: { rates: { KRW } } } = await useKrwApi.krwPrice();
 		if (KRW) setResults(KRW);
 		// console.log(KRW);
-	}, 1000);
+	}, 1800000);
+
+	const fetchKrw = async () => {
+		const { data: { rates: { KRW } } } = await useKrwApi.krwPrice();
+		if (KRW) setResults(KRW);
+		// console.log(KRW);
+	};
 
 	useEffect(() => {
 		try {
 			setLoading(true);
+			fetchKrw();
 		} catch (error) {
 			console.error(error);
 			setError("Can't find infomation!");
